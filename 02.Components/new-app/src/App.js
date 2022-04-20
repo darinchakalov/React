@@ -5,11 +5,11 @@ function App() {
 	return (
 		<div className="App">
 			<header className="App-header">
-				<h1>ToDo App</h1>
+				<h1>Counter App</h1>
 			</header>
 
 			<main>
-				<h2>Tasks</h2>
+				<h2>Counter</h2>
 				<TodoList />
 			</main>
 

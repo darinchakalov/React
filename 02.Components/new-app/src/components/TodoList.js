@@ -1,9 +1,8 @@
-// HOW TO CLASS COMPONENT
+import React from "react";
 
 import TodoListItem from "./TodoListItem.js";
 
-// import React from "react";
-
+// HOW TO CLASS COMPONENT
 // class TodoList extends React.Component {
 // 	render() {
 // 		return (
@@ -17,15 +16,27 @@ import TodoListItem from "./TodoListItem.js";
 // }
 
 function TodoList() {
+	let [count, setCount] = React.useState(0);
+
 	return (
-		<ul>
-			{/* How to do it with props.children */}
+		// fragment
+		<>
+			<ul>
+				<TodoListItem>{count}</TodoListItem>
+				{/* {todos.map((todo) => (
+					<TodoListItem>{todo}</TodoListItem>
+				))} */}
+
+				{/* How to do it with props.children
 			<TodoListItem>Clean room</TodoListItem>
-			{/* How to do it with props.text for instance */}
-			{/* <TodoListItem text="Go Shopping"></TodoListItem> */}
+			How to do it with props.text for instance
+			<TodoListItem text="Go Shopping"></TodoListItem>
 			<TodoListItem>Go Shopping</TodoListItem>
-			<TodoListItem>Learn React</TodoListItem>
-		</ul>
+			<TodoListItem>Learn React</TodoListItem> */}
+			</ul>
+
+			<button onClick={() => setCount(count + 1)}>Increment</button>
+		</>
 	);
 }
 
