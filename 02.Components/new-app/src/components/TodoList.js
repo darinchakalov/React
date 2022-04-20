@@ -19,9 +19,12 @@ import TodoListItem from "./TodoListItem.js";
 function TodoList() {
 	return (
 		<ul>
-			<TodoListItem text="Clean room"></TodoListItem>
-			<TodoListItem text="Go Shopping"></TodoListItem>
-			<TodoListItem text="Learn React"></TodoListItem>
+			{/* How to do it with props.children */}
+			<TodoListItem>Clean room</TodoListItem>
+			{/* How to do it with props.text for instance */}
+			{/* <TodoListItem text="Go Shopping"></TodoListItem> */}
+			<TodoListItem>Go Shopping</TodoListItem>
+			<TodoListItem>Learn React</TodoListItem>
 		</ul>
 	);
 }
