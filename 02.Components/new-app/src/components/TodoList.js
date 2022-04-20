@@ -17,12 +17,17 @@ import TodoListItem from "./TodoListItem.js";
 
 function TodoList() {
 	let [count, setCount] = React.useState(0);
+	let [name, setName] = React.useState("");
+
+	const inputChangeHandler = (e) => {
+		setName(e.target.value);
+	};
 
 	return (
 		// fragment
 		<>
 			<ul>
-				<TodoListItem>{count}</TodoListItem>
+				<TodoListItem name={name}>{count}</TodoListItem>
 				{/* {todos.map((todo) => (
 					<TodoListItem>{todo}</TodoListItem>
 				))} */}
@@ -34,8 +39,10 @@ function TodoList() {
 			<TodoListItem>Go Shopping</TodoListItem>
 			<TodoListItem>Learn React</TodoListItem> */}
 			</ul>
-
+			<input type="" onChange={inputChangeHandler} />
 			<button onClick={() => setCount(count + 1)}>Increment</button>
+			{/* Same as above */}
+			{/* <button onClick={setCount.bind(null, count + 1)}>Increment</button> */}
 		</>
 	);
 }
