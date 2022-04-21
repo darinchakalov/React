@@ -1,0 +1,6 @@
+{
+	"0": { "id": 1, "text": "Give dog a bath", "isDone": false },
+	"1": { "id": 2, "text": "Feed cat", "isDone": false },
+	"2": { "id": 3, "text": "Do laundry", "isDone": false },
+	"3": { "id": 4, "text": "Go Shopping", "isDone": false }
+}

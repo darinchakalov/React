@@ -11,8 +11,8 @@ export default function TodoItem({ todo, onDelete, onCheck }) {
 	// }, [id]);
 
 	return (
-		<li onClick={() => onCheck(todo.id)} className={styles["todo-item"]}>
-			{todo.text} <button onClick={() => onDelete(todo.id)}>X</button>
+		<li onClick={() => onCheck(todo.id)} className={todo.isDone ? styles["todo-item"] : ""}>
+			{todo.text} <button onClick={(e) => onDelete(e, todo.id)}>X</button>
 		</li>
 	);
 }
