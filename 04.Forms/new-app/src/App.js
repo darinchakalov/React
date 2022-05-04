@@ -16,6 +16,10 @@ function App() {
 		console.log(username);
 	};
 
+  const onServiceChange = (e) => {
+    setUsername('')
+  }
+
 	return (
 		<div className="App">
 			<form method="POST" onSubmit={submitHandler}>
@@ -29,7 +33,7 @@ function App() {
 				</div>
 				<div>
 					<label htmlFor="services">Services</label>
-					<select name="services">
+					<select name="services" onChange={onServiceChange}>
 						<option value="1">Private client</option>
 						<option value="2">Business client</option>
 						<option value="3">Enterprise client</option>
