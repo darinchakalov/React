@@ -1,5 +1,6 @@
 import "./App.css";
 import { useState, useEffect } from "react";
+import HobbyList from "./components/HobbyList.js";
 
 function App() {
 	let [username, setUsername] = useState("Pesho");
@@ -16,9 +17,9 @@ function App() {
 		console.log(username);
 	};
 
-  const onServiceChange = (e) => {
-    setUsername('')
-  }
+	const onServiceChange = (e) => {
+		setUsername("");
+	};
 
 	return (
 		<div className="App">
@@ -45,6 +46,7 @@ function App() {
 				</div>
 				<button type="submit">Login</button>
 			</form>
+			<HobbyList title="My favourite hobbies" />
 		</div>
 	);
 }
