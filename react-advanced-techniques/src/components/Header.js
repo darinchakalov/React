@@ -18,6 +18,9 @@ const Header = () => {
 						<Nav.Link to="/login" as={Link}>
 							Login
 						</Nav.Link>
+						<Nav.Link to="/my-list" as={Link}>
+							Dogs
+						</Nav.Link>
 						<NavDropdown title="Link" id="navbarScrollingDropdown">
 							<NavDropdown.Item href="#action3">Action</NavDropdown.Item>
 							<NavDropdown.Item href="#action4">Another action</NavDropdown.Item>
@@ -27,8 +30,8 @@ const Header = () => {
 						<Nav.Link href="#" disabled>
 							Link
 						</Nav.Link>
-						<p>{user.email}</p>
 					</Nav>
+					<Nav.Link to="/profile">{user.email}</Nav.Link>
 					<Form className="d-flex">
 						<FormControl type="search" placeholder="Search" className="me-2" aria-label="Search" />
 						<Button variant="outline-success">Search</Button>

@@ -4,7 +4,7 @@ export const AuthContext = createContext();
 
 const initialstate = {
 	_id: "",
-	email: "test",
+	email: "",
 };
 
 //This is a component
