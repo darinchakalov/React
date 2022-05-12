@@ -1,51 +1,17 @@
-import { createContext, useContext, useState, useReducer } from 'react';
+import { createContext, useState } from "react";
 
 export const AuthContext = createContext();
 
-const initialState = {
-    _id: '',
-    email: '',
+const initialstate = {
+	_1d: "",
+	email: "test",
+	accessToken: "",
 };
 
-const reducer = (state, action) => {
-    switch (action.type) {
-        case 'LOGIN':
-            return { ...state, email: action.payload }
-        case 'LOGOUT':
-            return initialState;
-        default:
-            return state;
-    }
+//This is a component
+export const AuthProvider = ({ children }) => {
+	const [user, setUser] = useState(initialstate);
+
+	//Returning the AuthContext instead of providing it to the App
+	return <AuthContext.Provider value={{ user }}>{children}</AuthContext.Provider>;
 };
-
-export const AuthProvider = ({
-    children
-}) => {
-    // const [user, setUser] = useState(initialState);
-    const [user, dispatch] = useReducer(reducer, initialState);
-
-    const login = (email, password) => {
-        // setUser({
-        //     email,
-        // });
-
-        dispatch({
-            type: 'LOGIN',
-            payload: email
-        });
-    };
-
-    const logout = () => dispatch({type: 'LOGOUT'});
-
-    return (
-        <AuthContext.Provider value={{ user, login, logout, isAuthenticated: Boolean(user.email) }}>
-            {children}
-        </AuthContext.Provider>
-    );
-};
-
-export const useAuth = () => {
-    const authState = useContext(AuthContext);
-
-    return authState;
-}
