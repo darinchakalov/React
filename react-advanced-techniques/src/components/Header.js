@@ -1,7 +1,10 @@
 import { Nav, Navbar, Container, NavDropdown, Form, FormControl, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext.js";
 
 const Header = () => {
+	//Use custom Hook to import the auth state instead of useContext(AuthState)
+	const { user } = useAuth();
 	return (
 		<Navbar bg="light" expand="lg">
 			<Container fluid>
@@ -24,6 +27,7 @@ const Header = () => {
 						<Nav.Link href="#" disabled>
 							Link
 						</Nav.Link>
+						<p>{user.email}</p>
 					</Nav>
 					<Form className="d-flex">
 						<FormControl type="search" placeholder="Search" className="me-2" aria-label="Search" />
