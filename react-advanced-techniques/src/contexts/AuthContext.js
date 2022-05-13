@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useReducer } from "react";
 
 export const AuthContext = createContext();
 
@@ -7,17 +7,43 @@ const initialstate = {
 	email: "",
 };
 
+const reducer = (state, action) => {
+	//state is the initial state and action is the newly provided one
+
+	switch (action.type) {
+		case "LOGIN":
+			return { ...state, email: action.payload };
+		case "LOGOUT":
+			return initialstate;
+		default:
+			return state;
+	}
+
+	// return {
+	// 	email: action,
+	// };
+};
+
 //This is a component
 export const AuthProvider = ({ children }) => {
-	const [user, setUser] = useState(initialstate);
+	// const [user, setUser] = useState(initialstate);
+	const [user, dispatch] = useReducer(reducer, initialstate);
 
 	const login = (email, password) => {
-		setUser({ email });
+		// setUser({ email });
+		dispatch({
+			type: "LOGIN",
+			payload: email,
+		});
+	};
+
+	const logout = () => {
+		dispatch({ type: "LOGOUT" });
 	};
 
 	//Returning the AuthContext instead of providing it to the App
 	return (
-		<AuthContext.Provider value={{ user, login, isAuthenticated: Boolean(user.email) }}>
+		<AuthContext.Provider value={{ user, login, logout, isAuthenticated: Boolean(user.email) }}>
 			{children}
 		</AuthContext.Provider>
 	);
