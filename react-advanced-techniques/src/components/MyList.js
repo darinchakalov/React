@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
 import { Carousel } from "react-bootstrap";
-import { useAuth } from "../contexts/AuthContext.js";
-import { Navigate } from "react-router-dom";
-export default function MyList() {
+import { isAuth } from "../hoc/isAuth.js";
+
+function MyList() {
 	const [dogs, setDogs] = useState([]);
-	const { user } = useAuth();
 
 	useEffect(() => {
 		fetch("https://dog.ceo/api/breeds/image/random/3")
@@ -12,10 +11,6 @@ export default function MyList() {
 			.then((data) => setDogs(data.message))
 			.catch((err) => console.log(err));
 	}, []);
-
-	if (!user.email) {
-		return <Navigate to="/login" />;
-	}
 
 	return (
 		<Carousel style={{ color: "black" }}>
@@ -31,3 +26,8 @@ export default function MyList() {
 		</Carousel>
 	);
 }
+
+const GuardedComponent = isAuth(MyList);
+export default GuardedComponent;
+
+// Here we can simply do export default isAuth(MyList) instead of the above two rows

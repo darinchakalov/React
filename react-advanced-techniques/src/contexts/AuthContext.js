@@ -16,7 +16,11 @@ export const AuthProvider = ({ children }) => {
 	};
 
 	//Returning the AuthContext instead of providing it to the App
-	return <AuthContext.Provider value={{ user, login }}>{children}</AuthContext.Provider>;
+	return (
+		<AuthContext.Provider value={{ user, login, isAuthenticated: Boolean(user.email) }}>
+			{children}
+		</AuthContext.Provider>
+	);
 };
 
 //Custom Hook to return auth state
