@@ -7,10 +7,13 @@ export default function Login() {
 	const navigate = useNavigate();
 	const { login } = useContext(AuthContext);
 
+	throw new Error("Some error");
+
 	const loginHandler = (e) => {
 		e.preventDefault();
 
 		const { email, password } = Object.fromEntries(new FormData(e.currentTarget));
+
 		login(email, password);
 		navigate("/");
 	};
